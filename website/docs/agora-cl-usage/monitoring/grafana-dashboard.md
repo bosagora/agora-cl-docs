@@ -54,12 +54,9 @@ scrape_configs:
   - job_name: 'validator'
     static_configs:
       - targets: ['localhost:8081']
-  - job_name: 'Agora node'
+  - job_name: 'agora node'
     static_configs:
       - targets: ['localhost:8080']
-  - job_name: 'slasher'
-    static_configs:
-      - targets: ['localhost:8082']
 ```
 
 4. In the same directory, double-click the **prometheus** file (with extension `.exe` in Windows) to start Prometheus,
@@ -132,8 +129,8 @@ This section is currently out of date. Refer to Grafana's [The new unified alert
 ## Creating and importing dashboards
 
 1. The dashboard can now be customised to the users preferences. There are two examples that can be used:
-- [dashboard designed for small amount of validator keys](https://docs.prylabs.network/assets/grafana-dashboards/small_amount_validators.json)
-- [dashboard designed for more than 10 validator keys](https://docs.prylabs.network/assets/grafana-dashboards/big_amount_validators.json)
+- [dashboard designed for small amount of validator keys](https://agora-cl-docs.bosagora.org/assets/grafana-dashboards/small_amount_validators.json)
+- [dashboard designed for more than 10 validator keys](https://agora-cl-docs.bosagora.org/assets/grafana-dashboards/big_amount_validators.json)
 
 2. To import this json into the Grafana dashboard, click on the **+** icon on the left menu and select 'Import',
 

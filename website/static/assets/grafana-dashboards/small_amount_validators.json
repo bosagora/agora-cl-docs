@@ -22,7 +22,7 @@
   "links": [],
   "panels": [
     {
-      "content": "\n## Presentation\n-----\nWelcome to my dashboard!\n\nEnsure to update your grafana to the version 7.0.1 or more. Previous version won't have everything working properly.\n\nIf you face any issue to understand a panel or to know what to do, make sure to read the small note on the corner top left of the panel if there is one!\n\n\n## Fiat converter\n-----\nThe currency converter allow you to see the earning for one of the currency in the dropdown list.\nThe value `All` equals to `BOA`. To have access to the currency converter, you can find how in this [guide](https://docs.prylabs.network/docs/agora-cl-usage/monitoring/currency-converter/)\n\n&nbsp;  \nYou can get the currencies you want, but the currency correctly displayed in the earning panels are:\n`BTC, CHF, CAD, EUR, USD, JPY, GBP`  \nIf you want to display correctly another currency that the one in the previous list, you can create a [git issue](https://github.com/GuillaumeMiralles/agora-cl-grafana-dashboard/issues) or you can DM me on discord (**Ocaa/grums** in agora-cl discord)\n\n## Earning panels exceptions\n-----\nThe earning panels are supposing that you have done deposits of 40,000 BOA exactly. If you see some incoherence in this values it's probably because you have deposited more than 40,000 BOA.\nIf so, you can fix the total earning panel by adding at the end of the query the substraction of your excedend 40,000 BOA. For the others earning panels (hourly daily weekly monthly),\nit will be fixed by itself with time, but you can still fix it temporarily by doing the same job than on the total earning panel (then don't forget to remove your temporarily fix once it has been fixed automatically)\n\n##### Total earning fix\n-----\nIf you sent 32.5 BOA on each validator and you have 5 validators, the total earning query will look like\n```\nsum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32 - 0.5*5\n```\n\nTo edit a panel, left click on the panel title then chose edit, then ensure to save the dashboard !\n\n\n## Support\n-----\nIf you enjoy the dashboard and you want to tip me for the work, you can send BOA and ERC20 token at this address **0xbDf75af14F356c381eC63329a4aB1C55D5c13fc5**\n\n\n\n## Bug\n-----\nIf you find a bug, please report it to me. You can create a [git issue](https://github.com/GuillaumeMiralles/agora-cl-grafana-dashboard/issues) or you can DM me on discord (Ocaa/grums in agora-cl discord)\nThanks for all the reports\n\n&nbsp;\n\nAfter reading it, you can now delete me. And don't forget to save the dashboard after deleting me! (button on the upper right) :)\n\nEnjoy\n\n\n\n",
+      "content": "\n## Presentation\n-----\nWelcome to my dashboard!\n\nEnsure to update your grafana to the version 7.0.1 or more. Previous version won't have everything working properly.\n\nIf you face any issue to understand a panel or to know what to do, make sure to read the small note on the corner top left of the panel if there is one!\n\n\n## Earning panels exceptions\n-----\nThe earning panels are supposing that you have done deposits of 40000 BOA exactly. If you see some incoherence in this values it's probably because you have deposited more than 40,000 BOA.\nIf so, you can fix the total earning panel by adding at the end of the query the substraction of your excedend 40,000 BOA. For the others earning panels (hourly daily weekly monthly),\nit will be fixed by itself with time, but you can still fix it temporarily by doing the same job than on the total earning panel (then don't forget to remove your temporarily fix once it has been fixed automatically)\n\n##### Total earning fix\n-----\nIf you sent 40000.5 BOA on each validator and you have 5 validators, the total earning query will look like\n```\nsum(validator_balance) - count(validator_balance > 20000 and validator_statuses == 3)*40000 - 0.5*5\n```\n\nTo edit a panel, left click on the panel title then chose edit, then ensure to save the dashboard !\n\n\n## Support\n-----\nIf you enjoy the dashboard and you want to tip me for the work, you can send BOA and ERC20 token at this address **0xbDf75af14F356c381eC63329a4aB1C55D5c13fc5**\n\n\n\n## Bug\n-----\nIf you find a bug, please report it to me. You can create a [git issue](https://github.com/bosagora/agora-grafana-dashboard/issues)\nThanks for all the reports\n\n&nbsp;\n\nAfter reading it, you can now delete me. And don't forget to save the dashboard after deleting me! (button on the upper right) :)\n\nEnjoy\n\n\n\n\",\n\n\n",
       "datasource": "Prometheus",
       "description": "To delete this panel: left click on the title, then chose remove",
       "fieldConfig": {
@@ -321,7 +321,7 @@
       "pluginVersion": "7.0.1",
       "targets": [
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32)*absent(crypto_currency{pair=~\"eth$fiat\"})",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 20000)*40000 + count(validator_balance offset 1h > 0)*40000)*absent(crypto_currency{pair=~\"eth$fiat\"})",
           "hide": false,
           "instant": true,
           "interval": "",
@@ -329,14 +329,14 @@
           "refId": "A"
         },
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32)*sum(crypto_currency{pair=\"eth$fiat\"})",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 20000)*40000 + count(validator_balance offset 1h > 0)*40000)*sum(crypto_currency{pair=\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "$fiat",
           "refId": "C"
         },
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32)/(avg_over_time(count(validator_balance > 16)[1h:30s])*32/24/365)*100",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 20000)*40000 + count(validator_balance offset 1h > 0)*40000)/(avg_over_time(count(validator_balance > 20000)[1h:30s])*40000/24/365)*100",
           "instant": true,
           "interval": "",
           "legendFormat": "Annualized %",
@@ -535,21 +535,21 @@
       "pluginVersion": "7.0.1",
       "targets": [
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 16)*32 + count(validator_balance offset 1d > 0)*32)*absent(crypto_currency{pair=~\"eth$fiat\"})",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 20000)*40000 + count(validator_balance offset 1d > 0)*40000)*absent(crypto_currency{pair=~\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "BOA",
           "refId": "A"
         },
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 16)*32 + count(validator_balance offset 1d > 0)*32)*sum(crypto_currency{pair=\"eth$fiat\"})",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 20000)*40000 + count(validator_balance offset 1d > 0)*40000)*sum(crypto_currency{pair=\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "$fiat",
           "refId": "C"
         },
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 16)*32 + count(validator_balance offset 1d > 0)*32)/(avg_over_time(count(validator_balance > 16)[1d:12m])*32/365)*100",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1d) - count(validator_balance > 20000)*40000 + count(validator_balance offset 1d > 0)*40000)/(avg_over_time(count(validator_balance > 20000)[1d:12m])*40000/365)*100",
           "instant": true,
           "interval": "",
           "legendFormat": "Annualized %",
@@ -748,21 +748,21 @@
       "pluginVersion": "7.0.1",
       "targets": [
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 16)*32 + count(validator_balance offset 1w > 0)*32)*absent(crypto_currency{pair=~\"eth$fiat\"})",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 20000)*40000 + count(validator_balance offset 1w > 0)*40000)*absent(crypto_currency{pair=~\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "BOA",
           "refId": "A"
         },
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 16)*32 + count(validator_balance offset 1w > 0)*32)*sum(crypto_currency{pair=\"eth$fiat\"})",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 20000)*40000 + count(validator_balance offset 1w > 0)*40000)*sum(crypto_currency{pair=\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "$fiat",
           "refId": "C"
         },
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 16)*32 + count(validator_balance offset 1w > 0)*32)/(avg_over_time(count(validator_balance > 16)[1w:84m])*32*7/365)*100",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 1w) - count(validator_balance > 20000)*40000 + count(validator_balance offset 1w > 0)*40000)/(avg_over_time(count(validator_balance > 20000)[1w:84m])*40000*7/365)*100",
           "instant": true,
           "interval": "",
           "legendFormat": "Annualized %",
@@ -961,21 +961,21 @@
       "pluginVersion": "7.0.1",
       "targets": [
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 16)*32 + count(validator_balance offset 30d > 0)*32)*absent(crypto_currency{pair=~\"eth$fiat\"})",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 20000)*40000 + count(validator_balance offset 30d > 0)*40000)*absent(crypto_currency{pair=~\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "BOA",
           "refId": "A"
         },
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 16)*32 + count(validator_balance offset 30d > 0)*32)*sum(crypto_currency{pair=\"eth$fiat\"})",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 20000)*40000 + count(validator_balance offset 30d > 0)*40000)*sum(crypto_currency{pair=\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "$fiat",
           "refId": "C"
         },
         {
-          "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 16)*32 + count(validator_balance offset 30d > 0)*32)/(avg_over_time(count(validator_balance > 16)[30d:6h])*32/12)*100",
+          "expr": "(sum(validator_balance) - sum(validator_balance offset 30d) - count(validator_balance > 20000)*40000 + count(validator_balance offset 30d > 0)*40000)/(avg_over_time(count(validator_balance > 20000)[30d:6h])*40000/12)*100",
           "instant": true,
           "interval": "",
           "legendFormat": "Annualized %",
@@ -1165,21 +1165,21 @@
       "pluginVersion": "7.0.1",
       "targets": [
         {
-          "expr": "sum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32*absent(crypto_currency{pair=~\"eth$fiat\"})",
+          "expr": "sum(validator_balance) - count(validator_balance > 20000 and validator_statuses == 3)*40000*absent(crypto_currency{pair=~\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "BOA",
           "refId": "A"
         },
         {
-          "expr": "(sum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32)*sum(crypto_currency{pair=\"eth$fiat\"})",
+          "expr": "(sum(validator_balance) - count(validator_balance > 20000 and validator_statuses == 3)*40000)*sum(crypto_currency{pair=\"eth$fiat\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "$fiat",
           "refId": "C"
         },
         {
-          "expr": "(sum(validator_balance) - count(validator_balance > 16 and validator_statuses == 3)*32)*100/(count(validator_balance > 16 and validator_statuses == 3)*32)",
+          "expr": "(sum(validator_balance) - count(validator_balance > 20000 and validator_statuses == 3)*40000)*100/(count(validator_balance > 20000 and validator_statuses == 3)*40000)",
           "instant": true,
           "interval": "",
           "legendFormat": "ROI",
@@ -1306,7 +1306,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(validator_balance > 16)",
+          "expr": "sum(validator_balance > 20000)",
           "interval": "",
           "legendFormat": "Total balance",
           "refId": "A"
@@ -1406,7 +1406,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "label_replace(validator_balance > 16, \"pubkey\", \"$1\", \"pubkey\", \"(.{10}).*\")",
+          "expr": "label_replace(validator_balance > 20000, \"pubkey\", \"$1\", \"pubkey\", \"(.{10}).*\")",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1531,8 +1531,8 @@
           "mappingType": 1,
           "pattern": "Value #A",
           "thresholds": [
-            "32",
-            "32.000000001"
+            "40000",
+            "40000.000000001"
           ],
           "type": "number",
           "unit": "short"
@@ -2126,16 +2126,16 @@
     },
     {
       "aliasColors": {
-        "CPU Agora node": "red",
+        "CPU agora node": "red",
         "CPU validator": "purple",
         "CPU validator localhost:8079": "orange",
         "CPU validator localhost:8081": "green",
-        "Agora node": "rgb(68, 218, 252)",
-        "memory Agora node": "rgb(96, 252, 255)",
+        "agora node": "rgb(68, 218, 252)",
+        "memory agora node": "rgb(96, 252, 255)",
         "memory validator": "rgb(255, 255, 160)",
         "memory validator localhost:8081": "purple",
         "test": "green",
-        "test Agora node": "orange",
+        "test agora node": "orange",
         "test validator": "green",
         "validator": "yellow"
       },
@@ -2185,7 +2185,7 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "alias": "CPU Agora node",
+          "alias": "CPU agora node",
           "fill": 0,
           "linewidth": 1,
           "yaxis": 2
@@ -2766,7 +2766,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "This alert is useful only for people who has automatic restart of the process after crash. \nThis can be made for example by using the agora-cl.bat file on windows with \"set PRYSM_AUTORESTART=true&\", or with docker with \"--restart always\"",
+      "description": "This alert is useful only for people who has automatic restart of the process after crash.",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -2808,7 +2808,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "(time()-process_start_time_seconds{job=\"Agora node\"})/3600",
+          "expr": "(time()-process_start_time_seconds{job=\"agora node\"})/3600",
           "interval": "",
           "legendFormat": "{{job}}",
           "refId": "A"
@@ -3123,11 +3123,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "up{job=\"Agora node\"}",
+          "expr": "up{job=\"agora node\"}",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Agora node",
+          "legendFormat": "agora node",
           "refId": "A"
         },
         {
@@ -3297,7 +3297,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 16)*32 + count(validator_balance offset 1h > 0)*32",
+          "expr": "sum(validator_balance) - sum(validator_balance offset 1h) - count(validator_balance > 20000)*40000 + count(validator_balance offset 1h > 0)*40000",
           "instant": false,
           "interval": "",
           "legendFormat": "validators earning on 1h",
@@ -3465,14 +3465,14 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(delta(log_entries_total{job=\"Agora node\", level=\"error\"}[1h]) > 0) ",
+          "expr": "sum(delta(log_entries_total{job=\"agora node\", level=\"error\"}[1h]) > 0) ",
           "instant": false,
           "interval": "",
           "legendFormat": "errors",
           "refId": "A"
         },
         {
-          "expr": "sum(delta(log_entries_total{job=\"Agora node\", level=\"warning\"}[1h]) > 0)",
+          "expr": "sum(delta(log_entries_total{job=\"agora node\", level=\"warning\"}[1h]) > 0)",
           "instant": false,
           "interval": "",
           "legendFormat": "warnings",
@@ -3830,8 +3830,8 @@
       {
         "current": {
           "selected": true,
-          "text": "Agora node",
-          "value": "Agora node"
+          "text": "agora node",
+          "value": "agora node"
         },
         "hide": 2,
         "label": null,
@@ -3839,11 +3839,11 @@
         "options": [
           {
             "selected": true,
-            "text": "Agora node",
-            "value": "Agora node"
+            "text": "agora node",
+            "value": "agora node"
           }
         ],
-        "query": "Agora node",
+        "query": "agora node",
         "skipUrlSync": false,
         "type": "constant"
       },
