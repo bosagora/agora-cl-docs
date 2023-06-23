@@ -8,78 +8,75 @@ import {FetchCLIHelp} from '../../src/fetchCliHelp.js';
 
 import {HeaderBadgesWidget} from '@site/src/components/HeaderBadgesWidget.js';
 
+<HeaderBadgesWidget commaDelimitedContributors="Raul,James" />
 
-This section lists the various flags used to customise the startup process of Agora-cl.
+Prysm's client software can be configured using flags and YAML files. This document provides a comprehensive list of all available flags and their descriptions. The flag descriptions that you see in this document are generated from code comments within the latest Prysm release.
 
-## Beacon Node Configuration
-
-Below are all the available configuration parameters for the Agora-cl Agora node grouped by functionality. All information is retrieved from the latest Agora-cl release.
+## Beacon node flags
 
 <FetchCLIHelp prysmComponent={"beacon-chain"}/>
 
-## Validator Configuration
-
-Below are all the available configuration parameters for Agora-cl validator client grouped by functionality. All information is retrieved from the latest Agora-cl release.
+## Validator flags
 
 :::tip Graffiti
-You can use the `--graffiti` validator flag to add a string to your proposed blocks, which will be seen on the block explorer. I.e; `<startup command> --graffiti "Agora-cl is awesome!"`
+You can use the `--graffiti` validator flag to add a string to your proposed blocks, which will be seen on the block explorer. I.e; `<startup command> --graffiti "Prysm is awesome!"`
 :::
 
 <FetchCLIHelp prysmComponent={"validator"}/>
 
-## Client Stats Configuration
+## `prysmctl` flags
 
-Below are all the available configuration parameters for Agora-cl client stats software: an optional service that can report process metrics to third-parties such as block explorers. You can read more about this [here](/docs/agora-cl-usage/client-stats).
+Refer to the [Use prysmctl] for `prysmctl` download and installation instructions.
+
+<FetchCLIHelp prysmComponent={"prysmctl"}/>
+
+## Client stats flags
+
+Prysm's client stats service is an optional utility that reports process metrics to third-parties such as block explorers. Refer to our [client stats documentation](/docs/agora-cl-usage/client-stats) for more information.
 
 <FetchCLIHelp prysmComponent={"client-stats"}/>
 
-## Loading Parameters via a .YAML File
+## Loading parameters from a YAML file
 
-:::info
-Loading parameters via .YAML file is optional.
-:::
+You can optionally configure Prysm to load flag values from a `.yaml` file. Consider this option if you're looking for a streamlined terminal experience or unique, portable configuration profiles.
 
-Agora-cl now supports loading flag values from a specified `.yaml` file. Defining parameters in this way cuts back on terminal clutter and allows unique startup profiles to be saved independently.
-
-The below steps show how place a common Agora-cl flag into a YAML file and how to specify it at start up.
+The below steps show how place a common Prysm flag into a YAML file, and how to specify the YAML file when Prysm starts up.
 
 ### GNU\Linux, Mac, ARM64
-1. In your Agora-cl working directory, create a `.yaml` file and open it in a text editor.
+
+1. In your Prysm working directory, create a `.yaml` file and open it in a text editor.
 
 2. Add the following lines to the file before closing and saving:
 ```sh
 datadir: '/data'
 ```
 
-3. Start the Agora-cl Agora chain as normal, while specifying the location of the `.yaml` like so:
+3. Start the Prysm beacon chain as normal, while specifying the location of the `.yaml` like so:
 ```sh
-./agora-cl.sh beacon-chain --config-file=/path/to/file.yaml
+./agora.sh exec cl-node --config-file=/path/to/file.yaml
 ```
 or for a validator like so:
 ```sh
-./agora-cl.sh validator --config-file=/path/to/file.yaml
+./agora.sh validator --config-file=/path/to/file.yaml
 ```
 
 ### Windows
-1. In your Agora-cl working directory, create a `.yaml` file and open it in a text editor.
+
+1. In your Prysm working directory, create a `.yaml` file and open it in a text editor.
 
 2. Add the following lines to the file before closing and saving:
 ```sh
-datadir: 'c:\agora-cl'
+datadir: 'c:\prysm'
 ```
 
-3. Start the Agora-cl Agora chain as normal, while specifying the location of the `.yaml` like so:
+3. Start the Prysm beacon chain as normal, while specifying the location of the `.yaml` like so:
 ```sh
-.\agora-cl.bat beacon-chain --config-file=c:\path\to\file.yaml
+./agora.bat exec cl-node --config-file=c:\path\to\file.yaml
 ```
 or for a validator like so:
 ```sh
-.\agora-cl.bat validator --config-file=c:\path\to\file.yaml
+./agora.bat validator --config-file=c:\path\to\file.yaml
 ```
 
-It is possible to provide additional flags alongside the `.yaml` file, though if conflicting flags are provided, the flag defined in the`.yaml` file will take priority. For example, if the flag `--datadir=/data2` is specified and `datadir: "/data1"` is in the `.yaml` file, Agora-cl would prioritise writing to `/data1`.
+It is possible to provide additional flags alongside the `.yaml` file, though if conflicting flags are provided, the flag defined in the`.yaml` file will take priority. For example, if the flag `--datadir=/data2` is specified and `datadir: "/data1"` is in the `.yaml` file, Prysm would prioritise writing to `/data1`.
 
-
-import {RequestUpdateWidget} from '@site/src/components/RequestUpdateWidget.js';
-
-<RequestUpdateWidget />

@@ -35,14 +35,14 @@ The following command starts a Agora node with checkpoint sync configured to pul
   <TabItem value="win">
 
 ```
-./agora-cl.bat beacon-chain --checkpoint-sync-url=http://localhost:3500 --genesis-beacon-api-url=http://localhost:3500
+./agora.bat exec cl-node --checkpoint-sync-url=http://localhost:3500 --genesis-beacon-api-url=http://localhost:3500
 ```
 
   </TabItem>
   <TabItem value="others">
 
 ```bash
-./agora-cl.sh beacon-chain --checkpoint-sync-url=http://localhost:3500 --genesis-beacon-api-url=http://localhost:3500
+./agora.sh exec cl-node --checkpoint-sync-url=http://localhost:3500 --genesis-beacon-api-url=http://localhost:3500
 ```
 
   </TabItem>
@@ -77,7 +77,7 @@ Issue the following commands to export the `BeaconState` and `SignedBeaconBlock`
 
 :::info
 
-Installing `prysmctl` via `agora-cl.sh`, or downloading it from agora-cl's github release page, will be possible in an upcoming stable release.
+Installing `prysmctl` via `agora.sh`, or downloading it from agora-cl's github release page, will be possible in an upcoming stable release.
 
 :::
 
@@ -124,7 +124,7 @@ Use the following command to start your Agora node with checkpoint sync configur
   <TabItem value="win">
 
 ```bash
-./agora-cl.bat beacon-chain \
+./agora.bat exec cl-node \
 --checkpoint-block=$PWD/block_goerli_bellatrix_3041920-0x766bdce4c70b6ee991bd68f8065d73e3990895b1953f6b931baae0502d8cbfcf.ssz \
 --checkpoint-state=$PWD/state_goerli_bellatrix_3041920-0x34ebc10f191706afbbccb0c3c39679632feef0453fe842bda264e432e9e31011.ssz \
 --genesis-state=$PWD/genesis.ssz
@@ -134,7 +134,7 @@ Use the following command to start your Agora node with checkpoint sync configur
   <TabItem value="others">
 
 ```bash
-./agora-cl.sh beacon-chain \
+./agora.sh exec cl-node \
 --checkpoint-block=$PWD/block_goerli_bellatrix_3041920-0x766bdce4c70b6ee991bd68f8065d73e3990895b1953f6b931baae0502d8cbfcf.ssz \
 --checkpoint-state=$PWD/state_goerli_bellatrix_3041920-0x34ebc10f191706afbbccb0c3c39679632feef0453fe842bda264e432e9e31011.ssz \
 --genesis-state=$PWD/genesis.ssz

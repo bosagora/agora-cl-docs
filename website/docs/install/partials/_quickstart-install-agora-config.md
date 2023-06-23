@@ -9,50 +9,54 @@ Install latest docker client for your OS following the instructions at https://d
         {label: 'Testnet', value: 'testnet'}
     ]}>
   <TabItem value="mainnet">
-Download mainnet zip file and extract
+Download an install network
 
 ```
-wget https://github.com/bosagora/agora-chain/archive/refs/heads/mainnet.zip
-unzip agora-chain-mainnet.zip
+mkdir agora-chain
+cd agora-chain
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/bosagora/agora-chain/v0.x.x/agora.sh)"
 ```
 
 This will result in the following folder structure:
 ```
-📂 agora-chain-mainnet
-  ┣  📂 root
-    ┣ 📂 config
-      ┣ 📂 el
-      ┣ 📂 cl
+📂 agora-chain
+  ┣  📂 docs
+  ┣  📂 networks
+    ┣ 📂 devnet
+    ┣ 📂 mainnet
+    ┣ 📂 testnet
 ```
 
-  <p>Navigate to your <code>agora-chain-mainnet</code> directory:</p>
+  <p>Change to <code>mainnet</code> network:</p>
 
 ```
-cd agora-chain-mainnet
+./agora.sh network mainnet
 ```
   </TabItem>
 
   <TabItem value="testnet">
-Download mainnet zip file and extract
+Download an install network
 
 ```
-wget https://github.com/bosagora/agora-chain/archive/refs/heads/testnet.zip
-unzip agora-chain-testnet.zip
+mkdir agora-chain
+cd agora-chain
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/bosagora/agora-chain/v0.x.x/agora.sh)"
 ```
 
 This will result in the following folder structure:
 ```
-📂 agora-chain-testnet
-  ┣  📂 root
-    ┣ 📂 config
-      ┣ 📂 el
-      ┣ 📂 cl
+📂 agora-chain
+  ┣  📂 docs
+  ┣  📂 networks
+    ┣ 📂 devnet
+    ┣ 📂 mainnet
+    ┣ 📂 testnet
 ```
 
-  <p>Navigate to your <code>agora-chain-testnet</code> directory:</p>
+  <p>Change to <code>testnet</code> network:</p>
 
 ```
-cd agora-chain-testnet
+./agora.sh network testnet
 ```
 
   </TabItem>

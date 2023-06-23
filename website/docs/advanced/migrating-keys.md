@@ -50,7 +50,6 @@ import TabItem from '@theme/TabItem';
     {label: 'Linux', value: 'lin'},
     {label: 'Windows', value: 'win'},
     {label: 'MacOS', value: 'mac'},
-    {label: 'Arm64', value: 'arm'},
   ]
 }>
 <TabItem value="lin">
@@ -63,20 +62,15 @@ import TabItem from '@theme/TabItem';
 **Using the Agora-cl installation script**
 
 ```sh
-./agora-cl.sh validator slashing-protection-history export --datadir=/path/to/validatorDb --slashing-protection-export-dir=/path/to/desired/outputdir
+./agora.sh validator slashing-protection-history export <folder>
 ```
 
 **Using Docker**
 
 ```sh
-docker run -it -v /path/to/outputdir:/output -v /path/to/wallet:/wallet bosagora/agora-cl-validator:stable -- slashing-protection-history export --datadir=/path/to/validatorDb --slashing-protection-export-dir=/output
+docker run -it -v /path/to/outputdir:/output -v /path/to/wallet:/wallet bosagora/agora-cl-validator:v2.0.0 -- slashing-protection-history export --datadir=/path/to/validatorDb --slashing-protection-export-dir=/output
 ```
 
-**Using Bazel**
-
-```sh
-bazel run //validator -- slashing-protection-history export --datadir=/path/to/validatorDb --slashing-protection-export-dir=/path/to/desired/outputdir
-```
 
 The first time you run the process you will be asked to accept or decline the terms and conditions. Once accepted, the process exports the slashing protection JSON file in your specified `/path/to/outputdir` folder.
 
@@ -86,14 +80,14 @@ The first time you run the process you will be asked to accept or decline the te
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.bat validator slashing-protection-history export --datadir=\path\to\validatorDb --slashing-protection-export-dir=\path\to\desired\outputdir
+./agora.bat validator slashing-protection-history export <folder>
 ```
 
 
 **Using Docker**
 
 ```sh
-docker run -it -v \path\to\outputdir:/output -v \path\to\wallet:/wallet bosagora/agora-cl-validator:stable --slashing-protection-history export --datadir=/path/to/validatorDb --slashing-protection-export-dir=/output
+docker run -it -v \path\to\outputdir:/output -v \path\to\wallet:/wallet bosagora/agora-cl-validator:v2.0.0 --slashing-protection-history export --datadir=/path/to/validatorDb --slashing-protection-export-dir=/output
 ```
 
 Note that `datadir` should point to the directory containing your `validator.db` file. For example: `/direct/validator.db`.
@@ -106,37 +100,15 @@ The first time you run the process you will be asked to accept or decline the te
 **Using the Agora-cl installation script**
 
 ```sh
-./agora-cl.sh validator slashing-protection-history export --datadir=/path/to/validatorDb --slashing-protection-export-dir=/path/to/desired/outputdir
+./agora.sh validator slashing-protection-history export <folder>
 ```
 
 **Using Docker**
 
 ```sh
-docker run -it -v /path/to/outputdir:/output -v /path/to/wallet:/wallet bosagora/agora-cl-validator:stable -- slashing-protection-history export --datadir=/path/to/validatorDb --slashing-protection-export-dir=/output
+docker run -it -v /path/to/outputdir:/output -v /path/to/wallet:/wallet bosagora/agora-cl-validator:v2.0.0 -- slashing-protection-history export --datadir=/path/to/validatorDb --slashing-protection-export-dir=/output
 ```
 
-**Using Bazel**
-
-```sh
-bazel run //validator -- slashing-protection-history export --datadir=/path/to/validatorDb --slashing-protection-export-dir=/path/to/desired/outputdir
-```
-
-The first time you run the process you will be asked to accept or decline the terms and conditions. Once accepted, the process exports the slashing protection JSON file in your specified /path/to/outputdir folder.
-
-</TabItem>
-<TabItem value="arm">
-
-**Using the Agora-cl installation script**
-
-```sh
-./agora-cl.sh validator slashing-protection-history export --datadir=\path\to\validatorDb --slashing-protection-export-dir=\path\to\desired\outputdir
-```
-
-**Using Bazel**
-
-```sh
-bazel run //validator -- slashing-protection-history export --datadir=/path/to/validatorDb --slashing-protection-export-dir=/path/to/desired/outputdir
-```
 
 The first time you run the process you will be asked to accept or decline the terms and conditions. Once accepted, the process exports the slashing protection JSON file in your specified /path/to/outputdir folder.
 
@@ -160,13 +132,13 @@ To Identify the account(s) loaded in your validator, issue the following command
 **Using Linux/MacOS based systems**
 
 ```sh
-./agora-cl.sh validator accounts list
+./agora.sh validator accounts list
 ```
 
 **Using Windows based systems**
 
 ```sh
-agora-cl.bat validator accounts list
+./agora.bat validator accounts list
 ```
 This will produce output in the format of account number, three words seperated by a hyphon (-) and the public keys of each account. The output will be similar to this:
 
@@ -186,13 +158,13 @@ You can backup validator accounts from your wallet using the following command:
 **Using Linux/MacOS based systems**
 
 ```sh
-./agora-cl.sh validator accounts backup
+./agora.sh validator accounts backup
 ```
 
 **Using Windows based systems**
 
 ```sh
-agora-cl.bat validator accounts backup
+./agora.bat validator accounts backup
 ```
 You will now be prompted for the wallet password. Once entered, you will be guided through the backup process where you will able to select individual or all accounts to backup and the location where the backup file is created. You will also be prompted for a **"password"** for the backup file, **it is important to keep a note of this for use during the import process**.
 
@@ -217,13 +189,13 @@ Expand (unzip) the backup file created above. The file will contain one JSON fil
 **Using Linux/MacOS based systems**
 
 ```sh
-./agora-cl.sh validator accounts import --keys-dir=/path/to/keystore-file.json
+./agora.sh validator accounts import <folder>
 ```
 
 **Using Windows based systems**
 
 ```sh
-agora-cl.bat validator accounts import --keys-dir=\path\to\keystore-file.json
+./agora.bat validator accounts import <folder>
 ```
 
 This will import all files that are valid EIP-2335 keystores, such as those generated by the backup process above or the official Ethereum deposit launchpad's command-line tool.
@@ -241,7 +213,6 @@ To import a slashing protection JSON file (all Ethereum consensus clients use th
     {label: 'Linux', value: 'lin'},
     {label: 'Windows', value: 'win'},
     {label: 'MacOS', value: 'mac'},
-    {label: 'Arm64', value: 'arm'},
   ]
 }>
 <TabItem value="lin">
@@ -249,20 +220,15 @@ To import a slashing protection JSON file (all Ethereum consensus clients use th
 **Using the Agora-cl installation script**
 
 ```sh
-./agora-cl.sh validator slashing-protection-history import --datadir=/path/to/validatorDb --slashing-protection-json-file=/path/to/desiredimportfile
+./agora.sh validator slashing-protection-history import <folder>
 ```
 
 **Using Docker**
 
 ```sh
-docker run -it -v /path/to/desiredimportfile.json:/import/desiredimportfile.json -v /path/to/wallet:/wallet bosagora/agora-cl-validator:stable -- slashing-protection-history import --datadir=/path/to/validatorDb --slashing-protection-json-file=/import/desiredimportfile.json
+docker run -it -v /path/to/desiredimportfile.json:/import/desiredimportfile.json -v /path/to/wallet:/wallet bosagora/agora-cl-validator:v2.0.0 -- slashing-protection-history import --datadir=/path/to/validatorDb --slashing-protection-json-file=/import/desiredimportfile.json
 ```
 
-**Using Bazel**
-
-```sh
-bazel run //validator -- slashing-protection-history import --datadir=/path/to/validatorDb --slashing-protection-json-file=/path/to/desiredimportfile
-```
 
 </TabItem>
 <TabItem value="win">
@@ -270,12 +236,12 @@ bazel run //validator -- slashing-protection-history import --datadir=/path/to/v
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.bat validator slashing-protection-history import --datadir=\path\to\validatorDb --slashing-protection-json-file=\path\to\desiredimportfile
+./agora.bat validator slashing-protection-history import <folder>
 ```
 **Using Docker**
 
 ```sh
-docker run -it -v \path\to\desiredimportfile.json:/import/desiredimportfile.json -v \path\to\wallet:/wallet bosagora/agora-cl-validator:stable -- slashing-protection-history import --datadir=/path/to/validatorDb --slashing-protection-json-file=/import/desiredimportfile.json
+docker run -it -v \path\to\desiredimportfile.json:/import/desiredimportfile.json -v \path\to\wallet:/wallet bosagora/agora-cl-validator:v2.0.0 -- slashing-protection-history import --datadir=/path/to/validatorDb --slashing-protection-json-file=/import/desiredimportfile.json
 ```
 
 </TabItem>
@@ -284,34 +250,13 @@ docker run -it -v \path\to\desiredimportfile.json:/import/desiredimportfile.json
 **Using the Agora-cl installation script**
 
 ```sh
-./agora-cl.sh validator slashing-protection-history import --datadir=/path/to/validatorDb --slashing-protection-json-file=/path/to/desiredimportfile
+./agora.sh validator slashing-protection-history import <folder>
 ```
 
 **Using Docker**
 
 ```sh
-docker run -it -v /path/to/desiredimportfile.json:/import/desiredimportfile.json -v /path/to/wallet:/wallet bosagora/agora-cl-validator:stable -- slashing-protection-history import --datadir=/wallet --slashing-protection-json-file=/import/desiredimportfile.json
-```
-
-**Using Bazel**
-
-```sh
-bazel run //validator -- slashing-protection-history import --datadir=/path/to/validatorDb --slashing-protection-json-file=/path/to/desiredimportfile
-```
-
-</TabItem>
-<TabItem value="arm">
-
-**Using the Agora-cl installation script**
-
-```sh
-./agora-cl.sh validator slashing-protection-history import --datadir=/path/to/validatorDb --slashing-protection-json-file=/path/to/desiredimportfile
-```
-
-**Using Bazel**
-
-```sh
-bazel run //validator -- slashing-protection-history import --datadir=/path/to/validatorDb --slashing-protection-json-file=/path/to/desiredimportfile
+docker run -it -v /path/to/desiredimportfile.json:/import/desiredimportfile.json -v /path/to/wallet:/wallet bosagora/agora-cl-validator:v2.0.0 -- slashing-protection-history import --datadir=/wallet --slashing-protection-json-file=/import/desiredimportfile.json
 ```
 
 </TabItem>
@@ -327,13 +272,13 @@ On the original system, with the validator process stopped, remove the account(s
 **Using Linux/MacOS based systems**
 
 ```sh
-./agora-cl.sh validator accounts delete
+./agora.sh validator accounts delete
 ```
 
 **Using Windows based systems**
 
 ```sh
-agora-cl.bat validator accounts delete
+./agora.bat validator accounts delete
 ```
 This will produce output in the same format as the list function, three words identifying the account seperated by a hyphon (-) and the public keys of each account, the output will be similar to this:
 

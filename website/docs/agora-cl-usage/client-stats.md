@@ -47,11 +47,11 @@ To collect metrics from both, also assuming that the validator and Agora node ar
 
 To run client-stats from `agora-cl.sh` or `agora-cl.bat`, while adjusting the parameters to `client-stats` as per the above:
 
-`agora-cl.sh client-stats --validator-metrics-url=http://localhost:8081/metrics --agora-cl node-metrics-url=http://localhost:8080/metrics --clientstats-api-url=https://beaconcha.in/api/v1/stats/{apikey}/{machineName}`
+`./agora.sh client-stats --validator-metrics-url=http://localhost:8081/metrics --agora-cl node-metrics-url=http://localhost:8080/metrics --clientstats-api-url=https://beaconcha.in/api/v1/stats/{apikey}/{machineName}`
 
 or
 
-`agora-cl.bat client-stats --validator-metrics-url=http://localhost:8081/metrics --agora-cl node-metrics-url=http://localhost:8080/metrics --clientstats-api-url=https://beaconcha.in/api/v1/stats/{apikey}/{machineName}`
+`./agora.bat client-stats --validator-metrics-url=http://localhost:8081/metrics --agora-cl node-metrics-url=http://localhost:8080/metrics --clientstats-api-url=https://beaconcha.in/api/v1/stats/{apikey}/{machineName}`
 
 > If you see an error message that "PROCESS can be beacon-chain, validator, or slasher.", you need to manually update the `agora-cl.sh` or `agora-cl.bat` file to
 > its latest version, see [download instructions](/docs/install/install-with-script).

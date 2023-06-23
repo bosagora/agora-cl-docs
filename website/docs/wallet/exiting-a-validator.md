@@ -6,74 +6,62 @@ sidebar_label: Exit your validator
 
 import {HeaderBadgesWidget} from '@site/src/components/HeaderBadgesWidget.js';
 
-<HeaderBadgesWidget />
+<HeaderBadgesWidget  commaDelimitedContributors="James"/>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-To voluntarily exit your validator from the Ethereum network, you'll follow this procedure:
+Voluntarily exiting your validator from the Ethereum network is a one time command using the prysmctl tool. Note that this operation was previously facilitated by a command exposed by the Prysm validator client, and can still be accessed that way. At a high level, you'll follow these steps to exit your validator:
 
- 1. Ensure that a Agora node is running locally.
- 1. Issue the `voluntary-exit` command to your validator (examples provided below).
- 2. Select the account(s) that should be exited. This step can be skipped by specifying the account(s) via the `--public-keys` flag when issuing the `voluntary-exit` command.
- 3. Confirm your understanding of the consequences of exiting your validator by typing `Exit my validator` when prompted.
+1. Ensure that you have access to a fully synced beacon node.
+2. Issue the `validator exit` command to your validator.
+3. Select the account(s) that should be exited. This step can be skipped by specifying the account(s) via the `--public-keys` flag when issuing the `validator exit` command.
+4. Confirm your understanding of the consequences of exiting your validator by typing `Exit my validator` when prompted.
 
-After providing confirmation, your validator node will initiate the voluntary exit by broadcasting your request through your Agora node. By default, your validator node will try to access a Agora node running on `127.0.0.1:4000`. Learn how to update this and other settings via the `--help` flag. Alternatively, visit our [Parameters documentation](../agora-cl-usage/parameters.md).
+After providing confirmation, voluntary exit request will be broadcasted through your beacon node.
 
 :::caution
 
-Although validator nodes can voluntarily exit, you won't be able to withdraw your staked funds or re-enroll your validator until withdrawal functionality is implemented, which will likely happen soon after The Merge. Visit the [Agora Validator FAQ](https://agora-staking.bosagora.org/en/faq) to learn more.
+Voluntarily exiting will not withdraw fund, validators must have their `withdrawal_credentials` updated in addition to exiting to withdraw the entire balance. Learn more on how to withdraw earnings or fully withdraw your validator in [our guide](withdraw-validator.md)
+
+The `validator-exit command` only supports gRPC, which means that the specified `beacon-rpc-provider` needs to be a Prysm beacon node (because Prysm's beacon node client is the only client that supports gRPC)
 
 :::
 
+
 <Tabs
-  groupId="operating-systems"
-  defaultValue="lin"
-  values={[
-    {label: 'Linux', value: 'lin'},
-    {label: 'Windows', value: 'win'},
-    {label: 'MacOS', value: 'mac'},
-  ]
+groupId="operating-systems"
+defaultValue="lin"
+values={[
+{label: 'Linux', value: 'lin'},
+{label: 'Windows', value: 'win'},
+{label: 'Mac', value: 'arm'},
+]
 }>
 <TabItem value="lin">
 
-**Using Docker**
-
-```text
-docker run -it -v $HOME/AgoraValidators/agora-cl-wallet-v2:/wallet \
-  bosagora/agora-cl-validator:latest \
-  accounts voluntary-exit --wallet-dir=/wallet
 ```
+./agora.sh validator exit
+```
+
 
 </TabItem>
 <TabItem value="win">
 
-**Using Agora-cl.bat**
-
-```bash
-agora-cl.bat validator accounts voluntary-exit
+```
+./agora.bat validator exit 
 ```
 
-**Using Docker**
-
-```text
-docker run -it -v %LOCALAPPDATA%\AgoraValidators\agora-cl-wallet-v2:/wallet bosagora/agora-cl-validator:latest accounts voluntary-exit --wallet-dir=/wallet
-```
 
 </TabItem>
-<TabItem value="mac">
+<TabItem value="arm">
 
-**Using Docker**
-
-```text
-docker run -it -v $HOME/AgoraValidators/agora-cl-wallet-v2:/wallet \
-  bosagora/agora-cl-validator:latest \
-  accounts voluntary-exit --wallet-dir=/wallet
+```
+./agora.sh validator exit 
 ```
 
 </TabItem>
 </Tabs>
 
-import {RequestUpdateWidget} from '@site/src/components/RequestUpdateWidget.js';
 
-<RequestUpdateWidget />
+
