@@ -80,7 +80,7 @@ A Agora-cl validator client can then connect securely via [gRPC](https://grpc.io
 To create a new remote signing-capable wallet, you will need to prepare TLS certificates to connect securely to your remote gRPC server. Then, you can run:
 
 ```bash
-./agora-cl.sh validator wallet create
+./agora.sh validator wallet create
 ```
 
 :::info
@@ -103,7 +103,7 @@ Then select **Remote** wallet when prompted. You can also create a wallet **non-
 To edit your existing remote wallet configuration, such as changing the path of your TLS certs or remote address, you can run
 
 ```bash
-./agora-cl.sh validator wallet-v2 edit-config
+./agora.sh validator wallet-v2 edit-config
 ```
 
 You can also edit your wallet configuration **non-interactively** by using the following command line flags, which are also viewable by typing `./agora-cl.sh validator wallet create --help`.
@@ -121,7 +121,7 @@ You can also edit your wallet configuration **non-interactively** by using the f
 You can list all validator accounts in your non-HD wallet using the following command
 
 ```bash
-./agora-cl.sh validator accounts list
+./agora.sh validator accounts list
 ```
 
 Where you'll see the following output

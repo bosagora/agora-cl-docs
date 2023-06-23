@@ -55,14 +55,10 @@ import TabItem from '@theme/TabItem';
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.sh beacon-chain db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
+./agora.sh exec cl-node db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
 ```
 
-**Using Bazel**
 
-```sh
-bazel run //beacon-chain -- db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
-```
 
 </TabItem>
 <TabItem value="win">
@@ -70,7 +66,7 @@ bazel run //beacon-chain -- db restore --restore-source-file=/path/to/backup --r
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.bat beacon-chain db restore --restore-source-file=\path\to\backup --restore-target-dir=\path\to\desired\datadir
+./agora.bat exec cl-node db restore --restore-source-file=\path\to\backup --restore-target-dir=\path\to\desired\datadir
 ```
 
 </TabItem>
@@ -79,13 +75,7 @@ agora-cl.bat beacon-chain db restore --restore-source-file=\path\to\backup --res
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.sh beacon-chain db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
-```
-
-**Using Bazel**
-
-```sh
-bazel run //beacon-chain -- db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
+./agora.sh exec cl-node db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
 ```
 
 </TabItem>
@@ -94,13 +84,7 @@ bazel run //beacon-chain -- db restore --restore-source-file=/path/to/backup --r
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.sh beacon-chain db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
-```
-
-**Using Bazel**
-
-```sh
-bazel run //beacon-chain -- db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
+./agora.sh exec cl-node db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
 ```
 
 </TabItem>
@@ -137,14 +121,9 @@ Ensure your validator client is turned off if restoring a backup. You can restor
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.sh validator db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
+./agora.sh validator db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
 ```
 
-**Using Bazel**
-
-```sh
-bazel run //validator -- db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
-```
 
 </TabItem>
 <TabItem value="win">
@@ -152,7 +131,7 @@ bazel run //validator -- db restore --restore-source-file=/path/to/backup --rest
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.bat validator db restore --restore-source-file=\path\to\backup --restore-target-dir=\path\to\desired\datadir
+./agora.bat validator db restore --restore-source-file=\path\to\backup --restore-target-dir=\path\to\desired\datadir
 ```
 
 </TabItem>
@@ -161,14 +140,9 @@ agora-cl.bat validator db restore --restore-source-file=\path\to\backup --restor
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.sh validator db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
+./agora.sh validator db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
 ```
 
-**Using Bazel**
-
-```sh
-bazel run //validator -- db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
-```
 
 </TabItem>
 <TabItem value="arm">
@@ -176,14 +150,9 @@ bazel run //validator -- db restore --restore-source-file=/path/to/backup --rest
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.sh validator db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
+./agora.sh validator db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
 ```
 
-**Using Bazel**
-
-```sh
-bazel run //validator -- db restore --restore-source-file=/path/to/backup --restore-target-dir=/path/to/desired/datadir
-```
 
 </TabItem>
 </Tabs>

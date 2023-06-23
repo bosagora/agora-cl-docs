@@ -10,6 +10,10 @@
         },
         {
             "type": "doc",
+            "id": "wallet/withdraw-validator"
+        },
+        {
+            "type": "doc",
             "id": "security-best-practices"
         },
         {
@@ -44,7 +48,7 @@
                 },
                 {
                     "type": "doc",
-                    "id": "advanced/agora-cl_node_api"
+                    "id": "agora-cl-usage/prysmctl"
                 },
                 {
                     "type": "category",
@@ -78,10 +82,6 @@
                         },
                         {
                             "type": "doc",
-                            "id": "wallet/remote"
-                        },
-                        {
-                            "type": "doc",
                             "id": "wallet/nondeterministic"
                         },
                         {
@@ -90,15 +90,11 @@
                         },
                         {
                             "type": "doc",
-                            "id": "wallet/web3signer"
-                        },
-                        {
-                            "type": "doc",
-                            "id": "agora-cl-usage/graffiti-file"
-                        },
-                        {
-                            "type": "doc",
                             "id": "wallet/exiting-a-validator"
+                        },
+                        {
+                            "type": "doc",
+                            "id": "wallet/withdraw-validator"
                         }
                     ]
                 },

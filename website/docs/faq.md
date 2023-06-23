@@ -159,7 +159,7 @@ Deposits into Agora proof-of-stake are one-way in the beginning. Functionality o
 
 #### What is balance and what is effective balance?
 
-Your validator balance is the actual amount of BOA you have from being a validator in Agora. It can go up or down every epoch depending on your participation. Effective balance is a bit different. It is a value that lags behind your actual balance and is used exclusively to determine rewards and penalties for your validator. It has a max value of 32ETH, but your regular balance is uncapped. You can read more about the purpose of effective balance in this excellent post by Attestant [here](https://www.attestant.io/posts/understanding-validator-effective-balance/).
+Your validator balance is the actual amount of BOA you have from being a validator in Agora. It can go up or down every epoch depending on your participation. Effective balance is a bit different. It is a value that lags behind your actual balance and is used exclusively to determine rewards and penalties for your validator. It has a max value of 40,000 BOA, but your regular balance is uncapped. You can read more about the purpose of effective balance in this excellent post by Attestant [here](https://www.attestant.io/posts/understanding-validator-effective-balance/).
 
 import {RequestUpdateWidget} from '@site/src/components/RequestUpdateWidget.js';
 

@@ -14,10 +14,10 @@ Download the latest stable version of the deposit client from the [Agora Staking
         {label: 'Testnet', value: 'testnet'}
     ]}>
       <TabItem value="mainnet">
-        <pre><code>deposit.exe new-mnemonic --num_validators=1 --mnemonic_language=english</code></pre>
+        <pre><code>./agora.bat deposit-cli new-mnemonic --num_validators=1 --mnemonic_language=english</code></pre>
       </TabItem>
       <TabItem value="testnet">
-        <pre><code>deposit.exe new-mnemonic --num_validators=1 --mnemonic_language=english --chain=testnet</code></pre>
+        <pre><code>./agora.bat deposit-cli new-mnemonic --num_validators=1 --mnemonic_language=english</code></pre>
       </TabItem>
     </Tabs>
     <p>Follow the CLI prompts to generate your keys. This will give you the following artifacts:</p>
@@ -36,15 +36,15 @@ Download the latest stable version of the deposit client from the [Agora Staking
         {label: 'Testnet', value: 'testnet'}
     ]}>
       <TabItem value="mainnet">
-        <pre><code>agora.bat validator import &lt;YOUR_FOLDER_PATH&gt;</code></pre>
+        <pre><code>./agora.bat validator import &lt;YOUR_FOLDER_PATH&gt;</code></pre>
         <p>You’ll be prompted to specify a wallet directory twice. Provide the path to your <code>agora-chain-testnet/root/config/cl/validator_keys</code> folder for both prompts. You should see <code>Successfully imported 1 accounts, view all of them by running accounts list</code> when your account has been successfully imported into Agora-cl.</p>
         <p>Next, go to the <a href='https://agora-staking.bosagora.org/en/upload-deposit-data'>Agora Mainnet staking deposit data upload page</a> and upload your <code>deposit_data-*.json</code> file. You’ll be prompted to connect your wallet.</p>
         <p>You can then deposit 40,000 BOA into the Mainnet deposit contract via the staking launchpad page. Exercise extreme caution throughout this procedure.</p>
         <p>Finally, run the following command to start your validator, replacing <code>&lt;YOUR_FOLDER_PATH&gt;</code> with the full path to your <code>agora-chain-testnet/root/config/cl/validator_keys</code> folder:</p>
-        <pre><code>agora-cl.bat validator --wallet-dir=&lt;YOUR_FOLDER_PATH&gt;</code></pre>
+        <pre><code>./agora.sh exec validator --wallet-dir=&lt;YOUR_FOLDER_PATH&gt;</code></pre>
       </TabItem>
       <TabItem value="testnet">
-        <pre><code>agora.bat validator import  &lt;YOUR_FOLDER_PATH&gt; --testnet</code></pre>
+        <pre><code>./agora.bat validator import  &lt;YOUR_FOLDER_PATH&gt; --testnet</code></pre>
         <p>You’ll be prompted to specify a wallet directory twice. Provide the path to your <code>agora-chain-testnet/root/config/cl/validator_keys</code> folder for both prompts. You should see <code>Successfully imported 1 accounts, view all of them by running accounts list</code> when your account has been successfully imported into Agora-cl.</p>
         <p>Next, go to the <a href='https://testnet-agora-staking.bosagora.org/en/upload-deposit-data'>Agora Testnet staking deposit data upload page</a> and upload your <code>deposit_data-*.json</code> file. You’ll be prompted to connect your wallet.</p>
         <p>If you need Testnet BOA, head over to one of the following Telegram server:</p>
@@ -52,7 +52,7 @@ Download the latest stable version of the deposit client from the [Agora Staking
           <li><a href='https://t.me/bosagora_eng'>Bosagora Telegram</a></li>
         </ul>
         <p>Someone should be able to give you the Testnet BOA you need. You can then deposit 40,000 BOA into the Agora testnet’s deposit contract via the staking launchpad page. Exercise extreme caution throughout this procedure - <strong>never send real BOA to the testnet deposit contract.</strong> Finally, run the following command to start your validator, replacing <code>&lt;YOUR_FOLDER_PATH&gt;</code> with the full path to your <code>agora-chain-testnet/root/config/cl/validator_keys</code> folder:</p>
-        <pre><code>agora-cl.bat validator --wallet-dir=&lt;YOUR_FOLDER_PATH&gt; --testnet</code></pre>
+        <pre><code>./agora.sh exec validator --wallet-dir=&lt;YOUR_FOLDER_PATH&gt; --testnet</code></pre>
       </TabItem>
     </Tabs>
   </TabItem>
@@ -63,10 +63,10 @@ Download the latest stable version of the deposit client from the [Agora Staking
         {label: 'Testnet', value: 'testnet'}
     ]}>
       <TabItem value="mainnet">
-        <pre><code>./deposit new-mnemonic --num_validators=1 --mnemonic_language=english</code></pre>
+        <pre><code>./agora.sh deposit new-mnemonic --num_validators=1 --mnemonic_language=english</code></pre>
       </TabItem>
       <TabItem value="testnet">
-        <pre><code>./deposit new-mnemonic --num_validators=1 --mnemonic_language=english --chain=testnet</code></pre>
+        <pre><code>./agora.sh deposit new-mnemonic --num_validators=1 --mnemonic_language=english --chain=testnet</code></pre>
       </TabItem>
     </Tabs>
     <p>Follow the CLI prompts to generate your keys. This will give you the following artifacts:</p>
@@ -100,7 +100,7 @@ Download the latest stable version of the deposit client from the [Agora Staking
           <li><a href='https://t.me/bosagora_eng'>Bosagora Telegram</a></li>
         </ul>
         <p>Someone should be able to give you the Testnet BOA you need. You can then deposit 40,000 BOA into the Agota testnet’s deposit contract via the staking launchpad page. Exercise extreme caution throughout this procedure - <strong>never send real BOA to the testnet deposit contract.</strong>  Finally, run the following command to start your validator, replacing <code>&lt;YOUR_FOLDER_PATH&gt;</code> with the full path to your <code>agora-chain-testnet/root/config/cl/validator_keys</code> folder:</p>
-        <pre><code>./agora-cl.sh validator --wallet-dir=&lt;YOUR_FOLDER_PATH&gt; --testnet</code></pre>
+        <pre><code>./agora.sh exec validator --wallet-dir=&lt;YOUR_FOLDER_PATH&gt; --testnet</code></pre>
       </TabItem>
     </Tabs>
   </TabItem>

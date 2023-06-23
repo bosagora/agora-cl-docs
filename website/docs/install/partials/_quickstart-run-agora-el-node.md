@@ -12,6 +12,7 @@ In this step, you'll install an execution-layer client that Agora's consensus cl
 <TabItem value="others">
 
 ```text
+./agora.sh el-node init
 ./agora.sh el-node run
 ```
 
@@ -20,6 +21,7 @@ In this step, you'll install an execution-layer client that Agora's consensus cl
 <TabItem value="win">
 
 ```text
+./agora.bat el-node init
 ./agora.bat el-node run
 ```
 

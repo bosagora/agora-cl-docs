@@ -85,7 +85,6 @@ import TabItem from '@theme/TabItem';
     {label: 'Linux', value: 'lin'},
     {label: 'Windows', value: 'win'},
     {label: 'MacOS', value: 'mac'},
-    {label: 'Arm64', value: 'arm'},
   ]
 }>
 <TabItem value="lin">
@@ -93,22 +92,17 @@ import TabItem from '@theme/TabItem';
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.sh validator slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=/path/to/desired/outputdir
+./agora.sh validator slashing-protection-history export <folder>
 ```
 
 **Using Docker**
 
 ```sh
-docker run -it -v /path/to/outputdir:/output -v /path/to/wallet:/wallet bosagora/agora-cl-validator:stable -- slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=/output
+docker run -it -v /path/to/outputdir:/output -v /path/to/wallet:/wallet bosagora/agora-cl-validator:v2.0.0 -- slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=/output
 ```
 
 You will then find the slashing protection JSON file in your specified /path/to/outputdir folder.
 
-**Using Bazel**
-
-```sh
-bazel run //validator -- slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=/path/to/desired/outputdir
-```
 
 </TabItem>
 <TabItem value="win">
@@ -116,13 +110,13 @@ bazel run //validator -- slashing-protection-history export --datadir=/path/to/y
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.bat validator slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=\path\to\desired\outputdir
+./agora.bat validator slashing-protection-history <folder>
 ```
 
 **Using Docker**
 
 ```sh
-docker run -it -v \path\to\outputdir:/output -v \path\to\wallet:/wallet bosagora/agora-cl-validator:stable -- slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=/output
+docker run -it -v \path\to\outputdir:/output -v \path\to\wallet:/wallet bosagora/agora-cl-validator:v2.0.0 -- slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=/output
 ```
 
 You will then find the slashing protection JSON file in your specified \path\to\outputdir folder.
@@ -133,37 +127,17 @@ You will then find the slashing protection JSON file in your specified \path\to\
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.sh validator slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=/path/to/desired/outputdir
+./agora.sh validator slashing-protection-history <folder>
 ```
 
 **Using Docker**
 
 ```sh
-docker run -it -v /path/to/outputdir:/output -v /path/to/wallet:/wallet bosagora/agora-cl-validator:stable -- slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=/output
+docker run -it -v /path/to/outputdir:/output -v /path/to/wallet:/wallet bosagora/agora-cl-validator:v2.0.0 -- slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=/output
 ```
 
 You will then find the slashing protection JSON file in your specified /path/to/outputdir folder.
 
-**Using Bazel**
-
-```sh
-bazel run //validator -- slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=/path/to/desired/outputdir
-```
-
-</TabItem>
-<TabItem value="arm">
-
-**Using the Agora-cl installation script**
-
-```sh
-agora-cl.sh validator slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=/path/to/desired/outputdir
-```
-
-**Using Bazel**
-
-```sh
-bazel run //validator -- slashing-protection-history export --datadir=/path/to/your/validator/db --slashing-protection-export-dir=/path/to/desired/outputdir
-```
 
 </TabItem>
 </Tabs>
@@ -179,7 +153,6 @@ To import a slashing protection JSON file you obtained elsewhere, either from an
     {label: 'Linux', value: 'lin'},
     {label: 'Windows', value: 'win'},
     {label: 'MacOS', value: 'mac'},
-    {label: 'Arm64', value: 'arm'},
   ]
 }>
 <TabItem value="lin">
@@ -187,20 +160,15 @@ To import a slashing protection JSON file you obtained elsewhere, either from an
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.sh validator slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=/path/to/desiredimportfile
+./agora.sh validator slashing-protection-history import <folder>
 ```
 
 **Using Docker**
 
 ```sh
-docker run -it -v /path/to/desiredimportfile.json:/import/desiredimportfile.json -v /path/to/wallet:/wallet bosagora/agora-cl-validator:stable -- slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=/import/desiredimportfile.json
+docker run -it -v /path/to/desiredimportfile.json:/import/desiredimportfile.json -v /path/to/wallet:/wallet bosagora/agora-cl-validator:v2.0.0 -- slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=/import/desiredimportfile.json
 ```
 
-**Using Bazel**
-
-```sh
-bazel run //validator -- slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=/path/to/desiredimportfile
-```
 
 </TabItem>
 <TabItem value="win">
@@ -208,12 +176,12 @@ bazel run //validator -- slashing-protection-history import --datadir=/path/to/y
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.bat validator slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=\path\to\desiredimportfile
+./agora.bat validator slashing-protection-history import <folder>
 ```
 **Using Docker**
 
 ```sh
-docker run -it -v \path\to\desiredimportfile.json:/import/desiredimportfile.json -v \path\to\wallet:/wallet bosagora/agora-cl-validator:stable -- slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=/import/desiredimportfile.json
+docker run -it -v \path\to\desiredimportfile.json:/import/desiredimportfile.json -v \path\to\wallet:/wallet bosagora/agora-cl-validator:v2.0.0 -- slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=/import/desiredimportfile.json
 ```
 
 </TabItem>
@@ -222,35 +190,15 @@ docker run -it -v \path\to\desiredimportfile.json:/import/desiredimportfile.json
 **Using the Agora-cl installation script**
 
 ```sh
-agora-cl.sh validator slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=/path/to/desiredimportfile
+./agora.sh validator slashing-protection-history import <folder>
 ```
 
 **Using Docker**
 
 ```sh
-docker run -it -v /path/to/desiredimportfile.json:/import/desiredimportfile.json -v /path/to/wallet:/wallet bosagora/agora-cl-validator:stable -- slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=/import/desiredimportfile.json
+docker run -it -v /path/to/desiredimportfile.json:/import/desiredimportfile.json -v /path/to/wallet:/wallet bosagora/agora-cl-validator:v2.0.0 -- slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=/import/desiredimportfile.json
 ```
 
-**Using Bazel**
-
-```sh
-bazel run //validator -- slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=/path/to/desiredimportfile
-```
-
-</TabItem>
-<TabItem value="arm">
-
-**Using the Agora-cl installation script**
-
-```sh
-agora-cl.sh validator slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=/path/to/desiredimportfile
-```
-
-**Using Bazel**
-
-```sh
-bazel run //validator -- slashing-protection-history import --datadir=/path/to/your/validator/db --slashing-protection-json-file=/path/to/desiredimportfile
-```
 
 </TabItem>
 </Tabs>
