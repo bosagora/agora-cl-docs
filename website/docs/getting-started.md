@@ -53,10 +53,6 @@ The following table of contents provides a descriptive overview of Agora-cl's do
 <a href='agora-cl-usage/slasher'>Run a slasher</a>
 <p>Learn how to run a slasher, an optional Agora node process that detects and reports slashable offenses on the Agora proof-of-stake network.</p>
 </div>
-<div class='panel'>
-<a href='advanced/agora-cl_node_api'>Run an archival node</a>
-<p>Learn how to run your Agora node as an archival node. Archival nodes are like regular beacon nodes that are configured to store more blockchain data locally, increasing data retrieval performance in exchange for increased data storage requirements.</p>
-</div>
 <div class='panel secondary-panel section-title'>
 
 ### Backups and migrations
@@ -93,14 +89,7 @@ The following table of contents provides a descriptive overview of Agora-cl's do
 <a href='advanced/maintaining-uptime'>Maintain validator uptime with systemd or Docker</a>
 <p>Learn how to minimize validator downtime by running your validator as a background service through either Docker or <code>systemd</code>. </p>
 </div>
-<div class='panel'>
-<a href='wallet/web3signer'>Use Web3Signer</a>
-<p>Learn how to use <a href='https://github.com/ConsenSys/web3signer'>Web3Signer</a>, an open-source remote signing service that allows you to store your validator keys remotely instead of locally.</p>
-</div>
-<div class='panel'>
-<a href='agora-cl-usage/graffiti-file'>Add graffiti to blocks</a>
-<p>Learn how to configure your validator to add graffiti to the blocks that it proposes.</p>
-</div>
+
 <div class='panel'>
 <a href='wallet/exiting-a-validator'>Exit your validator</a>
 <p>Learn how to voluntarily exit your validator from Agora's consensus layer network.</p>
@@ -119,10 +108,7 @@ The following table of contents provides a descriptive overview of Agora-cl's do
 <a href='agora-cl-usage/individual-validator-monitoring'>Monitor validators by index</a>
 <p>Learn how to use Agora-cl to monitor block proposals, attestations, slashings, and more for any number of validators.</p>
 </div>
-<div class='panel'>
-<a href='agora-cl-usage/monitoring/grafana-dashboard'>Configure dashboarding and alerts with Prometheus and Grafana</a>
-<p>Learn how to configure dashboarding and alerts for your node, validator, and slasher using Prometheus (to aggregate data) and Grafana (to display it within a dashboard).</p>
-</div>
+
 <div class='panel'>
 <a href='agora-cl-usage/client-stats'>Collect metrics with client-stats</a>
 <p>Learn how to collect Agora node and validator metrics using Agora-cl's <code>client-stats</code> utility. This can be used to relay metrics data to the beaconcha.in stats service.</p>
