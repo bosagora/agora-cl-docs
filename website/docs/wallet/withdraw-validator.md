@@ -11,7 +11,7 @@ import {HeaderBadgesWidget} from '@site/src/components/HeaderBadgesWidget.js';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The **Capella/Shanghai Agora** upgrade lets you withdraw your validator nodes' staked Agora in one of two ways:
+The **Withdrawal Agora** upgrade lets you withdraw your validator nodes' staked Agora in one of two ways:
 
 1. **Partial (earnings) withdrawal**: This option lets you withdraw your earnings (that is, all value staked above 40,000 BOA) and continue validating.
 2. **Full withdrawal**: This option lets you liquidate your entire stake and earnings, effectively liquidating your validator node(s) and exiting the network.
@@ -24,7 +24,7 @@ In this how-to, you'll learn how to perform both types of withdrawals. Familiari
 1. **Your validator mnemonic**: You'll use this to authorize your validator withdrawal request(s). <!-- accessible accuracy > technical precision whenever technical precision isn't needed -->
 2. **Access to a beacon node**: You'll need to connect your validator to a beacon node in order to submit your withdrawal request. Visit our [quickstart](../install/install-with-script.md) for instructions if you need them.
 3. **Stable version of the staking-deposit-cli installed**: The [staking-deposit-cli](https://github.com/bosagora/agora-deposit-cli/releases) is a command-line tool provided by the Agora research team. We'll use this to authorize your withdrawal. We recommend building this from source or otherwise verifying the binaries as a security best practice.
-4. **Familiarity with [The Ethereum Foundation Withdrawals FAQ](https://notes.ethereum.org/@launchpad/withdrawals-faq)**: A client-agnostic overview of important information regarding Ethereum validator withdrawals.
+4. **Familiarity with [The BOSagora Foundation Withdrawals FAQ](https://notes.BOSagora.org/@launchpad/withdrawals-faq)**: A client-agnostic overview of important information regarding BOSagora validator withdrawals.
 5. **Time to focus:** This is a time-consuming procedure making a mistake can be expensive. Be vigilant against scammers; never share your mnemonic; take your time; ping us [on Discord](https://discord.gg/prysmaticlabs) if you have any questions.
 
 
@@ -151,7 +151,7 @@ Your SignedBLSToExecutionChange JSON file can be found at: /agora-chain/bls_to_e
 ```
 
 
-### Step 3: verify the `blstoexecutionchange` message(s) that the corresponding validator will set to the chosen Ethereum address
+### Step 3: verify the `blstoexecutionchange` message(s) that the corresponding validator will set to the chosen BOSagora address
 
 Once you complete the above, you’ll have a file contained in the `bls_to_execution_changes/` folder of your [staking-deposit-cli](https://github.com/bosagora/agora-deposit-cli). It will represent a list of BLS to execution messages that have been signed with your private keys and are ready to submit to Agora. Here’s what a sample file of these looks like. Example output with placeholder values:
 
@@ -247,11 +247,11 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-and you should see a response that contains withdrawal credentials that should have changed to the `0x01` format which includes your Ethereum execution address.
+and you should see a response that contains withdrawal credentials that should have changed to the `0x01` format which includes your BOSagora execution address.
 
 ### Done: Receiving partial withdrawals after `withdrawal_credentials` are updated is automatic, but will take time.
 
-Once your `withdrawal_credentials` field on the validator is updated to the `0x01` prefix all withdrawal actions are complete. Withdrawals of earnings over 40,000 BOA will be automatically sent to the chosen ethereum address when a block proposer includes your validator in its block. **Note that a maximum to 16 validators can have their balances withdrawn per block so delay times may vary before seeing the values appear in the ethereum address.**
+Once your `withdrawal_credentials` field on the validator is updated to the `0x01` prefix all withdrawal actions are complete. Withdrawals of earnings over 40,000 BOA will be automatically sent to the chosen BOSagora address when a block proposer includes your validator in its block. **Note that a maximum to 16 validators can have their balances withdrawn per block so delay times may vary before seeing the values appear in the BOSagora address.**
 
 </TabItem>
 <TabItem value="full">
@@ -337,7 +337,7 @@ A: Prysm processes messages last-in-first-out(LIFO) by design which means the la
 
 **Q: Can withdrawal addresses be set to smart contracts?**
 
-A: Yes, however only account balances will change and there will be no associated triggering of smart contract logic. Read [https://eips.ethereum.org/EIPS/eip-4895](https://eips.ethereum.org/EIPS/eip-4895) for more reasoning.
+A: Yes, however only account balances will change and there will be no associated triggering of smart contract logic.
 
 **Q: My validator was slashed or forcefully exited, can I still withdraw my remaining balance?**
 
@@ -349,18 +349,18 @@ A: The guide will still provide a safe way to generate the signed `blstoexecutio
 
 ## Glossary
 <!-- TODO: These terms can now be moved into Glossary CMS and embedded via quicklooks to further streamline the content experience - ping Mick if you'd like to help with this. -->
-- **Validator**: The on-chain representation of a validator node and its staked Ethereum.
+- **Validator**: The on-chain representation of a validator node and its staked BOSagora.
 - **Validator index:** A unique numeric ID assigned to a validator when activated. You can see this validator index in your Prysm validator client logs, or in block explorers such as [https://beaconcha.in](https://beaconcha.in) and [https://beaconscan.com](https://beaconscan.com) by looking it up using your public key. You will need to know the validator indices of the validators you wish to withdraw through this guide. Only activated validators can begin the exit and withdrawal processes.
-- **Staker:** The person or entity managing Ethereum validators.
-- **Voluntary exit:** Validators that are currently active on Ethereum can choose to **exit** the network, marking them as exited and exempting them from any staking responsibilities. In order to **withdraw** a validator’s balance completely, a voluntary exit must be submitted to Ethereum and must complete first.
-- **Full validator withdrawal:** The process of withdrawing your entire stake on Ethereum, exiting your validator, and withdrawing your entire balance to an Ethereum address of your choosing. Full validator withdrawals need a validator to exit first, which can take time depending on how large the exit queue is. Performing a full withdrawal requires submitting a voluntary exit first.
+- **Staker:** The person or entity managing BOSagora validators.
+- **Voluntary exit:** Validators that are currently active on BOSagora can choose to **exit** the network, marking them as exited and exempting them from any staking responsibilities. In order to **withdraw** a validator’s balance completely, a voluntary exit must be submitted to BOSagora and must complete first.
+- **Full validator withdrawal:** The process of withdrawing your entire stake on BOSagora, exiting your validator, and withdrawing your entire balance to an BOSagora address of your choosing. Full validator withdrawals need a validator to exit first, which can take time depending on how large the exit queue is. Performing a full withdrawal requires submitting a voluntary exit first.
 - **Partial validator withdrawal:** The process of withdrawing your validator’s **earnings** only. That is, if you're staking 41,000 BOA, you can withdraw 1,000 BOA using a partial withdrawal. Your validator does **not** need to exit, and you will continue to validate normally. Partial withdrawals do not go through an exit queue, but will only be processed at a maximum of 16 validators at a time per block.
-- **Capella/Shanghai Ethereum Upgrade:** Ethereum network upgrades bring major feature additions to the network as a result of significant work from Ethereum client teams. This spring, an upgrade known as Capella/Shanghai will make validator withdrawals on mainnet. The upgrade has two names because there are two pieces of software being upgraded: consensus clients such as Prysm, and execution clients such as go-ethereum.
-- **Validator mnemonic, HD wallet mnemonic, or validator seed phrase:** A mnemonic in this context is the 24 word secret that you received upon creating your validator(s), which is the ultimate credential that gives you access to withdrawing your validator(s). For many, this was generated when they first interacted with the ethereum staking CLI to prepare their validator deposits. We will refer to this as your validator mnemonic throughout this document
+- **Withdrawal BOSagora Upgrade:** BOSagora network upgrades bring major feature additions to the network as a result of significant work from BOSagora client teams. This spring, an upgrade known as Capella/Shanghai will make validator withdrawals on mainnet. The upgrade has two names because there are two pieces of software being upgraded: consensus clients such as Prysm, and execution clients such as go-BOSagora.
+- **Validator mnemonic, HD wallet mnemonic, or validator seed phrase:** A mnemonic in this context is the 24 word secret that you received upon creating your validator(s), which is the ultimate credential that gives you access to withdrawing your validator(s). For many, this was generated when they first interacted with the BOSagora staking CLI to prepare their validator deposits. We will refer to this as your validator mnemonic throughout this document
 - **Validator withdrawal credentials:** Each validator has data known as “withdrawal credentials” which can be fetched from your beacon node or from a block explorer such as [https://beaconcha.in](https://beaconcha.in) or [https://beaconscan.com](https://beaconscan.com) by looking at the “deposits” tab and seeing your credentials there. You will need these for this guide.
-- **Ethereum execution address:** Referred to also as an Ethereum address, this is a standard address to an Ethereum account which you can view in block explorers such as Etherscan. Your validator’s balance, upon a full withdrawal, will be available at an Ethereum address of your choosing.
-- **BLS key:** Your validators use a key format known as [BLS], which is used exclusively for staking. Validators have 4 kinds of BLS keys: validator public key, validator private key, withdrawal public key, and withdrawal private key. only the validator public key can be viewed on staking explorers such as [https://beaconcha.in](https://beaconcha.in), and private keys, which are secret, are used for signing. Not to be confused with an Ethereum address. The validator mnemonic can be used to access all 4 keys which are important for setting the Ethereum address for withdrawing.
-- **BLS to Execution Change:** In order to withdraw your validator, Ethereum needs to associate an **Ethereum execution address** with your validator’s **keys**. Underneath the hood, submitting a bls-to-execution-change (withdrawal) request updates the [withdrawal credentials](https://github.com/ethereum/consensus-specs/blob/master/specs/phase0/validator.md#withdrawal-credentials) which tells Ethereum “I want to withdraw my validator balance to this specific Ethereum address”. When you see the terms BLS to Execution or bls_to_exec used, it refers to this action. **note:** withdrawal request and bls-to-execution-change are used interchangeably.
+- **BOSagora execution address:** Referred to also as an BOSagora address, this is a standard address to an BOSagora account which you can view in block explorers such as Etherscan. Your validator’s balance, upon a full withdrawal, will be available at an BOSagora address of your choosing.
+- **BLS key:** Your validators use a key format known as [BLS], which is used exclusively for staking. Validators have 4 kinds of BLS keys: validator public key, validator private key, withdrawal public key, and withdrawal private key. only the validator public key can be viewed on staking explorers such as [https://beaconcha.in](https://beaconcha.in), and private keys, which are secret, are used for signing. Not to be confused with an BOSagora address. The validator mnemonic can be used to access all 4 keys which are important for setting the BOSagora address for withdrawing.
+- **BLS to Execution Change:** In order to withdraw your validator, BOSagora needs to associate an **BOSagora execution address** with your validator’s **keys**. 
 - **Pool:** Upon submission of a validator exit request or bls-to-execution-change request, the message will sit in a special place in memory ( the pool ) to be broadcasted across your peers. Since only the block proposers can include these requests and there is a limit to the number of requests included per block, sometimes if the pool becomes too full your message may be dropped and not included. If this happens, a re-submission of the request may be required.
 
 
