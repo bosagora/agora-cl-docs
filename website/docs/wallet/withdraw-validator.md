@@ -23,7 +23,7 @@ In this how-to, you'll learn how to perform both types of withdrawals. Familiari
 
 1. **Your validator mnemonic**: You'll use this to authorize your validator withdrawal request(s). <!-- accessible accuracy > technical precision whenever technical precision isn't needed -->
 2. **Access to a beacon node**: You'll need to connect your validator to a beacon node in order to submit your withdrawal request. Visit our [quickstart](../install/install-with-script.md) for instructions if you need them.
-3. **Stable version of the staking-deposit-cli installed**: The [staking-deposit-cli](https://github.com/bosagora/agora-deposit-cli/releases) is a command-line tool provided by the Agora research team. We'll use this to authorize your withdrawal. We recommend building this from source or otherwise verifying the binaries as a security best practice.
+3. **Stable version of the agora-deposit-cli installed**: The [agora-deposit-cli](https://github.com/bosagora/agora-deposit-cli/releases) is a command-line tool provided by the Agora research team. We'll use this to authorize your withdrawal. We recommend building this from source or otherwise verifying the binaries as a security best practice.
 4. **Familiarity with [The BOSagora Foundation Withdrawals FAQ](https://notes.BOSagora.org/@launchpad/withdrawals-faq)**: A client-agnostic overview of important information regarding BOSagora validator withdrawals.
 5. **Time to focus:** This is a time-consuming procedure making a mistake can be expensive. Be vigilant against scammers; never share your mnemonic; take your time; ping us [on Discord](https://discord.gg/prysmaticlabs) if you have any questions.
 
@@ -85,7 +85,7 @@ Your withdrawal credentials will be visible in the response to this request - lo
 }
 ```
 
-### Step 2: run the [staking-deposit-cli](https://github.com/bosagora/agora-deposit-cli) in an `offline` environment with your mnemonic to generate the `blstoexecutionchange` message(s)
+### Step 2: run the [agora-deposit-cli](https://github.com/bosagora/agora-deposit-cli) in an `offline` environment with your mnemonic to generate the `blstoexecutionchange` message(s)
 
 :::caution
 We recommend doing this next step *without* an Internet connection to be maximally secure. Either turn off the internet before introducing your mnemonic for signing or migrate to an air-gapped environment to continue the following steps.
@@ -102,10 +102,10 @@ Here’s the command to get started with the process. This command will **not** 
 'folder' is where the SignedBLSToExecutionChange data is stored. The default folder is ./bls_to_execution_changes
 
 By calling the command above, you should go through an interactive process that will ask you for the following information:
-
-1. **The network** you wish to perform this operation for. example: `mainnet`,`testnet` or `devnet`. 
-2. Enter your **mnemonic** next
-3. Next, you will be asked for the starting index you used to create your validators (read more about hd wallets [here](https://eips.ethereum.org/EIPS/eip-2334#path)). For **most users**, this will be 0 unless you created validators from a non default index.
+1. **Your language**. You can see the different options available, where English is one of the options, among others.
+2. **The network** you wish to perform this operation for. example: `mainnet`,`testnet` or `devnet`. 
+3. Enter your **mnemonic** next
+4. Next, you will be asked for the starting index you used to create your validators (read more about hd wallets [here](https://eips.ethereum.org/EIPS/eip-2334#path)). For **most users**, this will be 0 unless you created validators from a non default index.
 
 :::info
 Inside the original `deposit.json` file used for staking you can count each validator's public key in sequential order starting from 0.
@@ -153,7 +153,7 @@ Your SignedBLSToExecutionChange JSON file can be found at: /agora-chain/bls_to_e
 
 ### Step 3: verify the `blstoexecutionchange` message(s) that the corresponding validator will set to the chosen BOSagora address
 
-Once you complete the above, you’ll have a file contained in the `bls_to_execution_changes/` folder of your [staking-deposit-cli](https://github.com/bosagora/agora-deposit-cli). It will represent a list of BLS to execution messages that have been signed with your private keys and are ready to submit to Agora. Here’s what a sample file of these looks like. Example output with placeholder values:
+Once you complete the above, you’ll have a file contained in the `bls_to_execution_changes/` folder of your [agora-deposit-cli](https://github.com/bosagora/agora-deposit-cli). It will represent a list of BLS to execution messages that have been signed with your private keys and are ready to submit to Agora. Here’s what a sample file of these looks like. Example output with placeholder values:
 
 ```
 [
