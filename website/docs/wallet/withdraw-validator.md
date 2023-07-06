@@ -23,9 +23,8 @@ In this how-to, you'll learn how to perform both types of withdrawals. Familiari
 
 1. **Your validator mnemonic**: You'll use this to authorize your validator withdrawal request(s). <!-- accessible accuracy > technical precision whenever technical precision isn't needed -->
 2. **Access to a beacon node**: You'll need to connect your validator to a beacon node in order to submit your withdrawal request. Visit our [quickstart](../install/install-with-script.md) for instructions if you need them.
-3. **Stable version of the agora-deposit-cli installed**: The [agora-deposit-cli](https://github.com/bosagora/agora-deposit-cli/releases) is a command-line tool provided by the Agora research team. We'll use this to authorize your withdrawal. We recommend building this from source or otherwise verifying the binaries as a security best practice.
-4. **Familiarity with [The BOSagora Foundation Withdrawals FAQ](https://notes.BOSagora.org/@launchpad/withdrawals-faq)**: A client-agnostic overview of important information regarding BOSagora validator withdrawals.
-5. **Time to focus:** This is a time-consuming procedure making a mistake can be expensive. Be vigilant against scammers; never share your mnemonic; take your time; ping us [on Discord](https://discord.gg/prysmaticlabs) if you have any questions.
+3. **The agora-chain installed**: The [agora-chain](https://github.com/bosagora/agora-chain) is agora nodes and tool provided by the Agora research team.
+4. **Time to focus:** This is a time-consuming procedure making a mistake can be expensive. Be vigilant against scammers; never share your mnemonic; take your time; ping us [on Telegram](https://t.me/bosagora_eng) if you have any questions.
 
 
 We'll install other dependencies as we go. <!-- we provide prysmctl instructions below so we can remove it here and set expectations to minimize duplication -->
